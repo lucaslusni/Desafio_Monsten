@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Simulador de Votação – Filmes/Séries</title>
+  <meta name="description" content="Simulador de votação de filmes/séries com cadastro e persistência em localStorage." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23000' d='M8 10h36a4 4 0 0 1 4 4v6h6a2 2 0 0 1 2 2v32a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4Zm0 6v4h36v-4H8Zm40 6H12v32h40V22Z'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand" role="banner">
+        <img alt="Ícone de claquete" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath fill='%23ffffff' d='M8 10h36a4 4 0 0 1 4 4v6h6a2 2 0 0 1 2 2v32a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4V14a4 4 0 0 1 4-4Zm0 6v4h36v-4H8Zm40 6H12v32h40V22Z'/%3E%3C/svg%3E" />
+        <h1>Simulador de Votação – Filmes/Séries</h1>
+      </div>
+      <p class="sub">Vote em títulos, cadastre novos e acompanhe os totais.</p>
+
+      <nav class="tabs" role="tablist" aria-label="Navegação">
+        <button class="tab-btn" id="tab-lista" role="tab" aria-controls="panel-lista" aria-selected="true">Lista</button>
+        <button class="tab-btn" id="tab-cadastro" role="tab" aria-controls="panel-cadastro" aria-selected="false">Cadastro</button>
+      </nav>
+
+      <section class="stats" aria-live="polite">
+        <div class="card stat">
+          <h3>Total de Itens</h3>
+          <div class="value" id="totalItens">0</div>
+        </div>
+        <div class="card stat">
+          <h3>Votos Positivos (Geral)</h3>
+          <div class="value" id="totalGostei">0</div>
+        </div>
+        <div class="card stat">
+          <h3>Votos Negativos (Geral)</h3>
+          <div class="value" id="totalNaoGostei">0</div>
+        </div>
+      </section>
+    </header>
+
+    <!-- Painel da Lista -->
+    <section id="panel-lista" role="tabpanel" aria-labelledby="tab-lista">
+      <div class="grid" id="lista"></div>
+    </section>
+
+    <!-- Painel do Cadastro -->
+    <section id="panel-cadastro" class="hidden" role="tabpanel" aria-labelledby="tab-cadastro">
+      <div class="card">
+        <h2 style="margin-top:0">Cadastrar novo filme/série</h2>
+        <form id="form-cadastro" novalidate>
+          <div class="row">
+            <div class="field">
+              <label for="titulo">Título *</label>
+              <input id="titulo" name="titulo" required maxlength="100" placeholder="Ex.: O Castelo Animado" />
+            </div>
+            <div class="field">
+              <label for="genero">Gênero *</label>
+              <input id="genero" name="genero" required maxlength="60" placeholder="Ex.: Fantasia" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="imagem">Imagem (URL) *</label>
+            <input id="imagem" name="imagem" required inputmode="url" placeholder="https://..." />
+          </div>
+          <div class="field">
+            <label for="descricao">Descrição (opcional)</label>
+            <textarea id="descricao" name="descricao" maxlength="280" placeholder="Breve sinopse..."></textarea>
+          </div>
+          <button class="submit" type="submit">Adicionar</button>
+          <p id="feedback" class="sub" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <footer>
+      <span>Feito em HTML/CSS/JS. Lucas A.Lusni</span>
+    </footer>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
